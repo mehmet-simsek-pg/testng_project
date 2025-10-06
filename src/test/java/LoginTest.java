@@ -1,20 +1,9 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import utility.BaseDriver;
 
-public class LoginTest {
-
-    WebDriver driver;
-
-    @BeforeClass
-    public void init(){
-       driver  = BaseDriver.driver("https://automationexercise.com/");
-    }
+public class LoginTest extends BaseGUITest{
 
     @Test(priority = 1, description = "Verify that home page is visible successfully")
     public void verifyHomePage() {
@@ -44,10 +33,5 @@ public class LoginTest {
         emailInput.sendKeys("testuser004@example.com");
         passwordInput.sendKeys("12345");
         loginBtn.click();
-    }
-
-    @AfterClass
-    public void quitTest() {
-        driver.quit();
     }
 }
