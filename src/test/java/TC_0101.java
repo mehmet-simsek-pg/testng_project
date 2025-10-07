@@ -1,10 +1,9 @@
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class LoginTest extends BaseGUITest{
+public class TC_0101 extends BaseGUITest{
 
     HomePage homePage;
     LoginPage loginPage;

@@ -4,9 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-public class LoginPage {
+import java.time.Duration;
+
+public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='login-form']/h2")
     WebElement accountText;
@@ -25,24 +29,22 @@ public class LoginPage {
     WebElement errorMessage;
 
     public LoginPage(final WebDriver driver) {
-
-        PageFactory.initElements(driver,this);
+        super(driver);
     }
 
     public void checkPage() {
-        Assert.assertTrue(accountText.isDisplayed(), "Login sayfasi acilmadi");
+        verifyDisplayed(accountText, "Login sayfasi acilmadi");
     }
 
     public void fillLoginMask() {
         emailInput.sendKeys("testuser004@example.com");
         passwordInput.sendKeys("123435");
-        loginBtn.click();
     }
     public void clickLoginBtn(){
-        loginBtn.click();
+        clickable(loginBtn);
     }
     public void checkErrorMessage() {
-        Assert.assertTrue(errorMessage.isDisplayed(), "Hata mesaji görünmüyor");
+        verifyDisplayed(errorMessage, "Hata mesaji görünmüyor");
     }
 
 }

@@ -3,10 +3,8 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
-public class HomePage {
+public class HomePage extends BasePage{
 
     @FindBy(xpath = "//div[@class='features_items']/h2")
     WebElement homePageText;
@@ -15,14 +13,14 @@ public class HomePage {
     WebElement loginBtn;
 
     public HomePage(final WebDriver driver){
-        PageFactory.initElements(driver,this);
+       super(driver);
     }
 
     public void verifyPage() {
-        Assert.assertTrue(homePageText.isDisplayed(), "Yanlis sayfa acildi");
+        verifyDisplayed(homePageText, "Yanlis sayfa acildi");
     }
 
     public void clickLoginBtn() {
-        loginBtn.click();
+        clickable(loginBtn);
     }
 }
