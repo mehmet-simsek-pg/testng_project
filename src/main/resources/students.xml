@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<students>
+    <student id="1">
+        <name>Taha</name>
+        <age>28</age>
+        <department>SDET</department>
+    </student>
+    <student id="2">
+        <name>Baris</name>
+        <age>24</age>
+        <department>Yazilim Uzmani</department>
+    </student>
+    <teacher>
+        <name>Merve</name>
+    </teacher>
+</students>

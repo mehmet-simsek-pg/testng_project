@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <child>
+        <subchild>
+            Veri
+        </subchild>
+    </child>
+    <name>Mehmet</name>
+    <email address="testuser@example.com" /> -> self-closing, address burada attribute olarak gecer
+</root>
