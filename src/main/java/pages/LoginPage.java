@@ -35,7 +35,7 @@ public class LoginPage extends BasePage{
         passwordInput.sendKeys("123435");
     }
     public void clickLoginBtn(){
-        clickable(loginBtn);
+        clickElement(loginBtn);
     }
     public void checkErrorMessage() {
         verifyDisplayed(errorMessage, "Hata mesaji görünmüyor");

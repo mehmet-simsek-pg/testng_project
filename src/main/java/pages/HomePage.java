@@ -21,6 +21,6 @@ public class HomePage extends BasePage{
     }
 
     public void clickLoginBtn() {
-        clickable(loginBtn);
+        clickElement(loginBtn);
     }
 }
