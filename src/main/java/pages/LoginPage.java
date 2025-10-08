@@ -31,8 +31,8 @@ public class LoginPage extends BasePage{
     }
 
     public void fillLoginMask() {
-        emailInput.sendKeys("testuser004@example.com");
-        passwordInput.sendKeys("123435");
+        sendKeysToElement(emailInput, "testuser004@example.com");
+        sendKeysToElement(passwordInput, "123435");
     }
     public void clickLoginBtn(){
         clickElement(loginBtn);
