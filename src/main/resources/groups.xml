@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Group Tests">
+    <test name="Login tests">
+        <groups>
+            <run>
+                <include name="register" />
+            </run>
+        </groups>
+        <classes>
+            <class name="konu_anlatimi.GroupExampleTest" />
+        </classes>
+    </test>
+</suite>
