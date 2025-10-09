@@ -12,7 +12,7 @@ public class TC_4 extends BaseGUITest{
     private String password = "12345";
 
     @BeforeClass
-    public void init() {
+    public void pages() {
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
     }
