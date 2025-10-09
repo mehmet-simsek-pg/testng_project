@@ -3,7 +3,8 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class TC_3 extends BaseGUITest{
+
+public class TC_3 extends BaseGUITest {
 
     private HomePage homePage;
     private LoginPage loginPage;

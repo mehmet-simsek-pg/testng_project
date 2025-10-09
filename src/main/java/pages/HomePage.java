@@ -18,6 +18,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[4]/a")
     private WebElement logoutBtn;
 
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[2]a")
+    private WebElement productsBtn;
+
     public HomePage(final WebDriver driver){
        super(driver);
     }
@@ -36,5 +39,9 @@ public class HomePage extends BasePage{
 
     public void clickLogoutBtn() {
         clickElement(logoutBtn);
+    }
+
+    public void clickProductsBtn() {
+        clickElement(productsBtn);
     }
 }
