@@ -30,9 +30,9 @@ public class LoginPage extends BasePage{
         verifyDisplayed(accountText, "Login sayfasi acilmadi");
     }
 
-    public void fillLoginMask() {
-        sendKeysToElement(emailInput, "testuser004@example.com");
-        sendKeysToElement(passwordInput, "123435");
+    public void fillLoginMask(final String email, final String password) {
+        sendKeysToElement(emailInput, email);
+        sendKeysToElement(passwordInput, password);
     }
     public void clickLoginBtn(){
         clickElement(loginBtn);

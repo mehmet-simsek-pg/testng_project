@@ -7,10 +7,16 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends BasePage{
 
     @FindBy(xpath = "//div[@class='features_items']/h2")
-    WebElement homePageText;
+    private WebElement homePageText;
 
     @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[4]/a")
-    WebElement loginBtn;
+    private WebElement loginBtn;
+
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[10]/a")
+    private WebElement username;
+
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[4]/a")
+    private WebElement logoutBtn;
 
     public HomePage(final WebDriver driver){
        super(driver);
@@ -22,5 +28,13 @@ public class HomePage extends BasePage{
 
     public void clickLoginBtn() {
         clickElement(loginBtn);
+    }
+
+    public void verifyLoggedIn() {
+        verifyDisplayed(username, "Kullanici login olamadi");
+    }
+
+    public void clickLogoutBtn() {
+        clickElement(logoutBtn);
     }
 }

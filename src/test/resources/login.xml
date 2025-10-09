@@ -3,7 +3,7 @@
 <suite name="Login Testleri">
     <test name="Smoke Tests">
         <classes>
-            <class name="TC_0101" />
+            <class name="TC_3" />
         </classes>
     </test>
 </suite>

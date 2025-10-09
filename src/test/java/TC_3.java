@@ -3,10 +3,13 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class TC_0101 extends BaseGUITest{
+public class TC_3 extends BaseGUITest{
 
-    HomePage homePage;
-    LoginPage loginPage;
+    private HomePage homePage;
+    private LoginPage loginPage;
+
+    private String email = "testuser004@example.com";
+    private String password = "incorrectPassword";
 
     @BeforeClass
     public void pages() {
@@ -29,9 +32,9 @@ public class TC_0101 extends BaseGUITest{
         loginPage.checkPage();
     }
 
-    @Test(priority = 4, description = "Enter correct email address and password")
+    @Test(priority = 4, description = "Enter incorrect email address and password")
     public void fillLoginMask() {
-        loginPage.fillLoginMask();
+        loginPage.fillLoginMask(email, password);
     }
 
     @Test(priority = 5, description = "Click 'login' button")
