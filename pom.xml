@@ -44,6 +44,19 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.databind.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>3.0.0-beta3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-1.2-api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+            <version>3.0.0-beta2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
