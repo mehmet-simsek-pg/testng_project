@@ -55,7 +55,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-1.2-api</artifactId>
             <version>3.0.0-beta2</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
