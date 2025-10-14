@@ -14,6 +14,6 @@ public class LogExample {
         LOGGER.info("Email ve password bilgileri girildi");
         LOGGER.warn("Password alani bos birakilamaz");
         LOGGER.error("Login basarisiz oldu");
-
+        Assert.fail("Test basarisiz oldu");
     }
 }
