@@ -28,17 +28,22 @@ public class LoginPage extends BasePage{
 
     public void checkPage() {
         verifyDisplayed(accountText, "Login sayfasi acilmadi");
+        LOGGER.info("Verify login page opened");
     }
 
     public void fillLoginMask(final String email, final String password) {
         sendKeysToElement(emailInput, email);
+        LOGGER.info("Email entered");
         sendKeysToElement(passwordInput, password);
+        LOGGER.info("Password entered");
     }
     public void clickLoginBtn(){
         clickElement(loginBtn);
+        LOGGER.info("Login button clicked");
     }
     public void checkErrorMessage() {
         verifyDisplayed(errorMessage, "Hata mesaji görünmüyor");
+        LOGGER.info("Verify error message displayed");
     }
 
 }

@@ -27,21 +27,26 @@ public class HomePage extends BasePage{
 
     public void verifyPage() {
         verifyDisplayed(homePageText, "Yanlis sayfa acildi");
+        LOGGER.info("Verify home page open");
     }
 
     public void clickLoginBtn() {
         clickElement(loginBtn);
+        LOGGER.info("Login button clicked");
     }
 
     public void verifyLoggedIn() {
         verifyDisplayed(username, "Kullanici login olamadi");
+        LOGGER.info("Verify user logged in");
     }
 
     public void clickLogoutBtn() {
         clickElement(logoutBtn);
+        LOGGER.info("Logout button clicked");
     }
 
     public void clickProductsBtn() {
         clickElement(productsBtn);
+        LOGGER.info("Products page opened");
     }
 }

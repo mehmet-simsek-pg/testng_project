@@ -1,5 +1,7 @@
 package pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,6 +15,7 @@ import java.time.Duration;
 
 public class BasePage {
 
+    protected final Logger LOGGER = LogManager.getLogger(this.getClass());
     WebDriver driver;
     WebDriverWait wait;
 
@@ -26,15 +29,18 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         try {
             element.click();
+            LOGGER.debug("Element clicked");
         } catch (Exception e1) {
             try {
                 new Actions(driver)
                         .moveToElement(element)
                         .click()
                         .perform();
+                LOGGER.debug("Element clicked with Actions");
             } catch (Exception e2){
                 try {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+                    LOGGER.debug("Element clicked with Javascript");
                 } catch (Exception e3) {
                     throw new RuntimeException("Hicbir click metodu ise yaramadi");
                 }
@@ -47,6 +53,7 @@ public class BasePage {
         try {
             element.clear();
             element.sendKeys(text);
+            LOGGER.debug("Text sent to element");
         } catch (Exception e1) {
             try {
                 new Actions(driver)
@@ -55,10 +62,12 @@ public class BasePage {
                         .sendKeys(text)
                         .build()
                         .perform();
+                LOGGER.debug("Text sent to element with Actions");
             } catch (Exception e2) {
                 try {
                     ((JavascriptExecutor) driver)
                             .executeScript("arguments[0].value = arguments[1];", element, text);
+                    LOGGER.debug("Text sent to element with Javascript");
                 } catch (Exception e3) {
                     throw new RuntimeException("Tüm sendKeys islemleri basarisiz oldu");
                 }
