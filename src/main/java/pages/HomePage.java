@@ -2,7 +2,10 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
+import org.testng.Assert;
 
 public class HomePage extends BasePage{
 
@@ -20,6 +23,9 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[2]a")
     private WebElement productsBtn;
+
+    @FindBy(xpath = "(//div[@class='single-products'])[5]/div/p")
+    private WebElement productName;
 
     public HomePage(final WebDriver driver){
        super(driver);
@@ -48,5 +54,9 @@ public class HomePage extends BasePage{
     public void clickProductsBtn() {
         clickElement(productsBtn);
         LOGGER.info("Products page opened");
+    }
+
+    public void verifyProductName() {
+        Assert.assertTrue(productName.isDisplayed(),"Product name görünmedi");
     }
 }

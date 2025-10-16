@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Genel Tekrar Tek browser ile" parallel="false">
+
+    <test name="Genel Tekrar Testleri">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="username" value="testuser004@example.com"/>
+        <parameter name="password" value="12345"/>
+        <parameter name="incorrect" value="incorrectPass"/>
+        <parameter name="productName" value="Winter Top"/>
+
+        <classes>
+            <class name="GenelTekrar"/>
+        </classes>
+    </test>
+</suite>
