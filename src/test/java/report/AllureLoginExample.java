@@ -67,4 +67,13 @@ public class AllureLoginExample {
     public void quit() {
         driver.quit();
     }
+
+    /**
+     * SeverityLevels:
+     * BLOCKER -> Sistemi tamamen durduran hata
+     * CRITICAL -> Temel fonksiyonlarin calismasini engelleyen hata
+     * NORMAL -> Önemli olmayan hata
+     * MINOR -> Kücük hatalar
+     * TRIVIAL -> Önemsiz hatalar
+     * */
 }
