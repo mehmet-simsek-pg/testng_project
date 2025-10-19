@@ -1,6 +1,9 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -17,24 +20,37 @@ public class GenelTekrar {
     ProductsPage productsPage;
     private static final Logger LOGGER = LogManager.getLogger(GenelTekrar.class);
 
+    public WebDriver createBrowser(final WebDriver browser) {
+        driver = browser;
+        driver.get("https://automationexercise.com/");
+        driver.manage().window().maximize();
+        try {
+            WebElement element =
+                    driver.findElement(By.xpath("//div[@class='fc-footer-buttons']/button[1]"));
+
+            element.click();
+            throw new NoSuchElementException("Element sayfada yok");
+
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Bilinmiyen bir hata olustu");
+        }
+        return driver;
+    }
+
     @Parameters({"browser"})
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     public void init(String browser) {
         switch (browser) {
             case "firefox":
-                driver = new FirefoxDriver();
-                driver.get("https://automationexercise.com/");
-                driver.manage().window().maximize();
+                driver = createBrowser(new FirefoxDriver());
                 break;
             case "safari":
-                driver = new SafariDriver();
-                driver.get("https://automationexercise.com/");
-                driver.manage().window().maximize();
+                driver = createBrowser(new SafariDriver());
                 break;
             case "chrome":
-                driver = new ChromeDriver();
-                driver.get("https://automationexercise.com/");
-                driver.manage().window().maximize();
+                driver = createBrowser(new ChromeDriver());
                 break;
         }
         loginPage = new LoginPage(driver);
@@ -61,7 +77,7 @@ public class GenelTekrar {
     }
 
     @Parameters({"username", "incorrect"})
-    @Test(groups = {"smoke"})
+    @Test(groups = {"negative"})
     public void loginWithInValidData(String username, String incorrect) {
         homePage.clickLoginBtn();
         LOGGER.info("Sign in/ Login button clicked " + " negative");
@@ -80,6 +96,9 @@ public class GenelTekrar {
     @Test(dependsOnGroups = {"smoke"})
     public void searchProduct(String productName) {
 
+        homePage.clickProductsBtn();
+        LOGGER.info("Product button clicked");
+
         productsPage.enterProductName(productName);
         LOGGER.info("Product name entered");
 
@@ -87,7 +106,7 @@ public class GenelTekrar {
         LOGGER.info("Search button clicked");
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void quit() {
         driver.quit();
     }

@@ -21,7 +21,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[4]/a")
     private WebElement logoutBtn;
 
-    @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[2]a")
+    @FindBy(xpath = "//ul[@class='nav navbar-nav']/li[2]/a")
     private WebElement productsBtn;
 
     @FindBy(xpath = "(//div[@class='single-products'])[5]/div/p")
