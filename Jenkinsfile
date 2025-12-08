@@ -26,9 +26,10 @@ stages {
         // bu stepte ise reportu olusturuyor
     stage('Generate Allure Report') {
     // allure result un olustugu klasörü tanimladik
-       allure([
-            results: [[path: 'target/allure-results']]
-       ])
-       }
+       steps {
+            allure([
+                results: [[path: 'target/allure-results']]
+                   ])
+        }
 }
 }
