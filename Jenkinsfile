@@ -9,18 +9,25 @@ tools {
 // stages sirayla jenkins in calistiracagi komutlar
 stages {
 // ilk adimda github tan projeyi cekip, main branche checkout oluyor
+
     stage('Checkout') {
-        git branch: 'main',
-        url: 'https://github.com/mehmet-simsek-pg/testng_project.git'
+    steps {
+    git branch: 'main',
+            url: 'https://github.com/mehmet-simsek-pg/testng_project.git'
+    }
+
 }
 
 // 2. stepte testleri calistiriyor
     stage('Run Test') {
-        // Mac
-        sh 'mvn clean test'
+    steps {
+    // Mac
+                   sh 'mvn clean test'
 
-        // Windows
-        //bat 'mvn clean test'
+                   // Windows
+                   //bat 'mvn clean test'
+    }
+
 }
 
         // bu stepte ise reportu olusturuyor
