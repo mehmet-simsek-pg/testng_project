@@ -6,7 +6,6 @@ agent any // bu pipeline dosyasina her hangi bir özel agent eklemedik
 tools {
     jdk 'JDK21'
     maven 'Maven-3.9'
-    allure 'Allure'
 }
 
 // stages sirayla jenkins in calistiracagi komutlar
@@ -38,6 +37,7 @@ stages {
     // allure result un olustugu klasörü tanimladik
        steps {
             allure([
+                commandline: 'Allure',
                 results: [[path: 'target/allure-results']]
                    ])
         }
