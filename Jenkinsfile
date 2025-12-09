@@ -78,7 +78,6 @@ pipeline {
             steps {
                 echo "Allure raporu üretiliyor..."
                 allure([
-                    commandLine: 'Allure',
                     results: [[path: "${ALLURE_RESULTS_PATH}"]] // Allure sonuç dosyalarının yolu.
                 ])
             }
