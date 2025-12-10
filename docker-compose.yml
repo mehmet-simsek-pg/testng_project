@@ -1,6 +1,4 @@
 # docker-compose dosya formatı versiyonu.
-# 3.8, modern Docker / Docker Compose sürümleri ile uyumlu bir versiyon.
-version: "3.8"
 
 # Birden fazla container tanımlayabileceğimiz services bölümü.
 services:

@@ -5,15 +5,20 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
 public class BaseDriver {
 
     public static WebDriver driver(String url) {
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless=new"); // chrome sayfasini acmadan arkaplanda testi calistiriyor.
+        chromeOptions.addArguments("--windows-size=1920,1080");
+
+        WebDriver driver = new ChromeDriver(chromeOptions);
         driver.get(url);
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         /** Bu bölüm ilk kullandigimiz sitede cikan cookies icindi, ortak her siteye uymadigi
