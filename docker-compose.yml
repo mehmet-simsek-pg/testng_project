@@ -1,0 +1,54 @@
+# docker-compose dosya formatı versiyonu.
+# 3.8, modern Docker / Docker Compose sürümleri ile uyumlu bir versiyon.
+version: "3.8"
+
+# Birden fazla container tanımlayabileceğimiz services bölümü.
+services:
+  # Bu servis bizim TestNG projesini çalıştıran container'ımız olacak.
+  testng-tests:
+    # Bu servisin image'ını nasıl build edeceğimizi tanımlıyoruz.
+    build:
+      # context: . -> Docker build işlemi için mevcut klasörü kullan.
+      # Yani pom.xml, src, Dockerfile hepsi bu context içinde olmalı.
+      context: .
+      # Hangi Dockerfile kullanılacak, ismi farklıysa burada belirtilebilir.
+      # Proje icerisinde birden fazla Dockerfile olabilir. Örn. projemizin adi e2e olsun
+      # proje icerisinde de web, api, database, mobile isimli 4 klasör olsun
+      # her klasör icerisinde projelerimiz var. Bu projeler icerisine de kendi yapilarina
+      # uygun Dockerfile ekleriz. Yani web icin olan Dockerfile icerisinde chrome la alakali
+      # bilgiler var. Ama mobile icin olan Dockerfile da ise appium ve emulator bilgileri olacak.
+      # Ama docker-compose dosyasi e2e projesi bir tane olacak. Bunu calistirdigim zaman container icerisinde
+      # 4 tane uygulama calismis olacak.
+      dockerfile: Dockerfile
+
+    # Container'a anlamlı bir isim veriyoruz.
+    # docker ps çıktısında bu isim gözükecek.
+    container_name: testng_project_tests
+
+    # Volume ayarları ile container içindeki bazı klasörleri
+    # host makineye map ediyoruz.
+    volumes:
+      # Maven’in ürettiği target klasörünü dışarıya map ediyoruz.
+      # Böylece container içindeki `target/allure-results` ve `target/surefire-reports`
+      # gibi klasörlere host makineden erişebilirsin.
+      - ./target:/usr/src/app/target
+
+      # Projede kullandığın logs klasörünü de map ediyoruz.
+      # Test loglarına host makineden direkt bakabilmeni sağlar.
+      - ./logs:/usr/src/app/logs
+
+    # Chrome gibi browser'lar çok bellek kullanır.
+    # shared memory (shm) alanını artırmak için bu ayarı kullanıyoruz.
+    # Özellikle Selenium + Chrome testlerinde "DevToolsActivePort file doesn't exist"
+    # benzeri hataları azaltmak için önerilir.
+    shm_size: "2gb"
+
+    # (Opsiyonel) Testlerin konsoldan rahat görünmesi için TTY açılabilir.
+    # tty: true
+    # stdin_open: true
+
+    # (Opsiyonel) Eğer environment değişkenleri ile farklı profiller, URL'ler vs.
+    # geçirmek istersen buraya ekleyebilirsin.
+    # environment:
+    #   - BASE_URL=https://www.example.com
+    #   - BROWSER=chrome
