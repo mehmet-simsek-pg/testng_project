@@ -4,6 +4,7 @@
 services:
   # Bu servis bizim TestNG projesini çalıştıran container'ımız olacak.
   testng-tests:
+    platform: linux/amd64
     # Bu servisin image'ını nasıl build edeceğimizi tanımlıyoruz.
     build:
       # context: . -> Docker build işlemi için mevcut klasörü kullan.
